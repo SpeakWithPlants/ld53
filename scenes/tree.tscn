@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdskyhnsugdds"]
+
+[ext_resource type="Texture2D" uid="uid://blb7j4a6876ud" path="res://assets/tree.png" id="1_g3eec"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3e3k"]
+radius = 6.0
+
+[node name="tree" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -57)
+texture = ExtResource("1_g3eec")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k3e3k")
