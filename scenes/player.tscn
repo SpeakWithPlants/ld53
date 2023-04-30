@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3s36137y1slf"]
+[gd_scene load_steps=7 format=3 uid="uid://bxddehpx6jw55"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_rblnb"]
-[ext_resource type="Texture2D" uid="uid://dc58j7gviomfx" path="res://assets/skiier.png" id="2_ee2h8"]
-[ext_resource type="Texture2D" uid="uid://lve4ix3uska3" path="res://assets/snow_trail.png" id="3_wnmk6"]
+[ext_resource type="Texture2D" uid="uid://dc58j7gviomfx" path="res://assets/sprites/skiier.png" id="2_oti6l"]
+[ext_resource type="Texture2D" uid="uid://lve4ix3uska3" path="res://assets/sprites/snow_trail.png" id="3_xc43k"]
 
 [sub_resource type="Gradient" id="Gradient_5xqdi"]
 offsets = PackedFloat32Array(0, 0.529801, 1)
@@ -19,7 +19,7 @@ radius = 5.0
 script = ExtResource("1_rblnb")
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_ee2h8")
+texture = ExtResource("2_oti6l")
 
 [node name="trail" type="CPUParticles2D" parent="sprite"]
 position = Vector2(-13, 0)
@@ -27,7 +27,7 @@ emitting = false
 amount = 25
 lifetime = 2.0
 lifetime_randomness = 1.0
-texture = ExtResource("3_wnmk6")
+texture = ExtResource("3_xc43k")
 direction = Vector2(-1, 0)
 spread = 90.0
 gravity = Vector2(0, 0)
@@ -40,7 +40,8 @@ color_ramp = SubResource("Gradient_5xqdi")
 position = Vector2(-13, 0)
 emitting = false
 amount = 400
-texture = ExtResource("3_wnmk6")
+lifetime = 0.3
+texture = ExtResource("3_xc43k")
 direction = Vector2(-1, 0)
 spread = 10.0
 gravity = Vector2(0, 0)

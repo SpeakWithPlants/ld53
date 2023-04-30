@@ -1,4 +1,7 @@
 extends CharacterBody2D
+class_name Player
+
+signal deliver(player)
 
 const max_speed = 850.0
 const gravity = 800.0
@@ -26,6 +29,7 @@ func _process(_delta):
 
 
 func _physics_process(delta):
+	_get_delivery_input()
 	_update_direction(delta)
 	_update_velocity(delta)
 	move_and_slide()
@@ -71,25 +75,22 @@ func _update_velocity(delta):
 
 func _update_trail():
 	var speed = velocity.length()
+	if speed > 0:
+		var ui = get_tree().get_first_node_in_group("ui")
+		ui.counting = true
 	trail.emitting = speed > 0
 	shred.emitting = abs(velocity.normalized().dot(direction)) < 0.8 and trail.emitting
 	pass
 
 
+func _get_delivery_input():
+	if Input.is_action_just_pressed("mouse_right"):
+		emit_signal("deliver", self)
+	pass
+
+
 func get_target_direction():
 	var new_target_direction = Vector2.ZERO
-	if Input.is_action_pressed("ui_down"):
-		use_mouse = false
-		new_target_direction.y += 1
-	if Input.is_action_pressed("ui_left"):
-		use_mouse = false
-		new_target_direction.x -= 1
-	if Input.is_action_pressed("ui_right"):
-		use_mouse = false
-		new_target_direction.x += 1
-	if Input.is_action_pressed("ui_up"):
-		use_mouse = false
-		new_target_direction.y -= 1
 	if Input.is_action_pressed("mouse_left"):
 		use_mouse = true
 		var mouse_pos = get_global_mouse_position()

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdskyhnsugdds"]
+[gd_scene load_steps=3 format=3 uid="uid://dflpnij7x854e"]
 
-[ext_resource type="Texture2D" uid="uid://blb7j4a6876ud" path="res://assets/tree.png" id="1_g3eec"]
+[ext_resource type="Texture2D" uid="uid://blb7j4a6876ud" path="res://assets/sprites/tree.png" id="1_erjbg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k3e3k"]
 radius = 6.0
@@ -9,7 +9,7 @@ radius = 6.0
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -57)
-texture = ExtResource("1_g3eec")
+texture = ExtResource("1_erjbg")
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k3e3k")

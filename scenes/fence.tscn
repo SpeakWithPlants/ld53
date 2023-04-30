@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b031mo47kk12o"]
+[gd_scene load_steps=3 format=3 uid="uid://2lewhwvvqwkv"]
 
-[ext_resource type="Texture2D" uid="uid://d3jjfong36v1g" path="res://assets/fence.png" id="1_orxgi"]
+[ext_resource type="Texture2D" uid="uid://d3jjfong36v1g" path="res://assets/sprites/fence.png" id="1_y6gxm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfpbx"]
 size = Vector2(6, 32)
@@ -8,7 +8,7 @@ size = Vector2(6, 32)
 [node name="fence" type="StaticBody2D"]
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_orxgi")
+texture = ExtResource("1_y6gxm")
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xfpbx")

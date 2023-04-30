@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ffbc2krpndjg"]
+
+[ext_resource type="Script" path="res://scenes/endzone.gd" id="1_nqp77"]
+
+[node name="endzone" type="Area2D"]
+script = ExtResource("1_nqp77")
+
+[node name="collider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc58j7gviomfx"
-path="res://.godot/imported/skiier.png-5e1f2d8044ed0761030169f958402c7a.ctex"
+uid="uid://lve4ix3uska3"
+path="res://.godot/imported/snow_trail.png-7b4f57f872a3f546ad1159cab6ca4553.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/skiier.png"
-dest_files=["res://.godot/imported/skiier.png-5e1f2d8044ed0761030169f958402c7a.ctex"]
+source_file="res://assets/sprites/snow_trail.png"
+dest_files=["res://.godot/imported/snow_trail.png-7b4f57f872a3f546ad1159cab6ca4553.ctex"]
 
 [params]
 

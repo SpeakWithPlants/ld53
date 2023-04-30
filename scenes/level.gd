@@ -5,13 +5,16 @@ const house_space_y_max = 1200
 const house_space = 100
 const tree_space = 60
 const fence_height = 32
+const endzone_height = 200
 const fence_scn = preload("res://scenes/fence.tscn")
 const tree_scn = preload("res://scenes/tree.tscn")
 const house_scn = preload("res://scenes/house.tscn")
+const endzone_scn = preload("res://scenes/endzone.tscn")
 
 var noise
 var course_width
 var course_length
+var endzone
 
 
 func _ready():
@@ -29,6 +32,7 @@ func generate_level(houses, tree_density):
 	_generate_houses(houses)
 	_generate_fences()
 	_generate_trees(tree_density)
+	_generate_endzone()
 	pass
 
 
@@ -64,6 +68,16 @@ func _generate_trees(tree_density):
 			if randf() < spawn_chance:
 				var offset = Vector2.RIGHT.rotated(TAU * randf()) * tree_space / 2.0
 				_add_tree_at(Vector2(x, y) + offset)
+	pass
+
+
+func _generate_endzone():
+	var new_endzone = endzone_scn.instantiate()
+	var top_left = Vector2(-course_width / 2.0, course_length)
+	var bottom_right = top_left + Vector2(course_width, endzone_height)
+	new_endzone.set_corners(top_left, bottom_right)
+	add_child(new_endzone)
+	endzone = new_endzone
 	pass
 
 

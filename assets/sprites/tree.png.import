@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyowd4iemoace"
-path="res://.godot/imported/cabin.png-8311603384075e8e3663b1734cefa24e.ctex"
+uid="uid://blb7j4a6876ud"
+path="res://.godot/imported/tree.png-15cb16b197553088007c6ba3ce2f75b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cabin.png"
-dest_files=["res://.godot/imported/cabin.png-8311603384075e8e3663b1734cefa24e.ctex"]
+source_file="res://assets/sprites/tree.png"
+dest_files=["res://.godot/imported/tree.png-15cb16b197553088007c6ba3ce2f75b0.ctex"]
 
 [params]
 

@@ -1,24 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://43dr4tjvyf1a"]
+[gd_scene load_steps=5 format=3 uid="uid://dsqc15e1q42dg"]
 
-[ext_resource type="Texture2D" uid="uid://cyowd4iemoace" path="res://assets/cabin.png" id="1_i2f13"]
+[ext_resource type="Script" path="res://scenes/house.gd" id="1_kqu5r"]
+[ext_resource type="Texture2D" uid="uid://cyowd4iemoace" path="res://assets/sprites/cabin.png" id="1_sityv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kf1m"]
 size = Vector2(100, 60)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y58mi"]
-radius = 156.029
+radius = 160.0
 
 [node name="house" type="StaticBody2D" groups=["houses"]]
+script = ExtResource("1_kqu5r")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -23)
-texture = ExtResource("1_i2f13")
+texture = ExtResource("1_sityv")
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_0kf1m")
 
 [node name="delivery_area" type="Area2D" parent="."]
+input_pickable = false
 
 [node name="collider" type="CollisionShape2D" parent="delivery_area"]
 shape = SubResource("CircleShape2D_y58mi")
