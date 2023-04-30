@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 const delivery_ping_scn = preload("res://scenes/delivery_ping.tscn")
+const pizza_scn = preload("res://scenes/pizza.tscn")
 const collision_penalty = 50
 
 var ui
@@ -26,6 +27,10 @@ func _on_delivery(player):
 	add_child(new_ping)
 	new_ping.global_position = player.global_position
 	ui.add_score(point_value)
+	
+	var new_pizza = pizza_scn.instantiate()
+	add_child(new_pizza)
+	new_pizza.global_position = player.global_position
 	pass
 
 

@@ -5,5 +5,5 @@
 [node name="flag" type="Node2D"]
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(10, -27)
+position = Vector2(0, -5)
 texture = ExtResource("1_evlgw")

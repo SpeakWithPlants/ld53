@@ -40,7 +40,7 @@ func start():
 		level.queue_free()
 	level = level_scn.instantiate()
 	add_child(level)
-	await level.generate_level(10, 3.0)
+	await level.generate_level(10, 5.0)
 	level.endzone.connect("body_entered", _on_body_entered_endzone)
 	pass
 

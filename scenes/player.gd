@@ -16,8 +16,9 @@ var halted = true
 var recovering = false
 
 @onready var sprite = $sprite
-@onready var trail = $sprite/trail
-@onready var shred = $sprite/shred
+@onready var particles = $particles
+@onready var trail = $particles/trail
+@onready var shred = $particles/shred
 @onready var speed_label = $speed_label
 @onready var collider = $collider
 @onready var recover_timer = $recover_timer
@@ -45,7 +46,11 @@ func _physics_process(delta):
 
 
 func _update_visual():
-	sprite.rotation = direction.angle()
+	particles.rotation = direction.angle()
+	var desired_frame = max(0, direction.dot(Vector2.DOWN)) * 3
+	if direction.dot(Vector2.LEFT) > 0:
+		desired_frame += 3
+	sprite.frame = desired_frame % 6
 	speed_label.text = "%0.1f" % velocity.length()
 	_update_trail()
 

@@ -5,8 +5,11 @@ const collision_penalty = 20
 
 var ui
 
+@onready var sprite = $sprite
+
 func _ready():
 	ui = get_tree().get_first_node_in_group("ui")
+	sprite.flip_h = randf() < 0.5
 	pass
 
 

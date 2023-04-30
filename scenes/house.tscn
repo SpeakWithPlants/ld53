@@ -4,20 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://cyowd4iemoace" path="res://assets/sprites/cabin.png" id="1_sityv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kf1m"]
-size = Vector2(100, 60)
+size = Vector2(64, 50)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y58mi"]
 radius = 160.0
 
 [node name="house" type="StaticBody2D" groups=["houses"]]
+y_sort_enabled = true
 script = ExtResource("1_kqu5r")
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -23)
+position = Vector2(0, -48)
 texture = ExtResource("1_sityv")
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_0kf1m")
 
 [node name="delivery_area" type="Area2D" parent="."]

@@ -21,7 +21,7 @@ var endzone
 
 func _ready():
 	noise = FastNoiseLite.new()
-	noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
 	pass
 
 
