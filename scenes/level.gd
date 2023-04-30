@@ -6,10 +6,12 @@ const house_space = 100
 const tree_space = 60
 const fence_height = 32
 const endzone_height = 200
+const flag_space = 100
 const fence_scn = preload("res://scenes/fence.tscn")
 const tree_scn = preload("res://scenes/tree.tscn")
 const house_scn = preload("res://scenes/house.tscn")
 const endzone_scn = preload("res://scenes/endzone.tscn")
+const flag_scn = preload("res://scenes/flag.tscn")
 
 var noise
 var course_width
@@ -20,7 +22,6 @@ var endzone
 func _ready():
 	noise = FastNoiseLite.new()
 	noise.noise_type = FastNoiseLite.TYPE_PERLIN
-	generate_level(10, 2.0)
 	pass
 
 
@@ -62,7 +63,7 @@ func _generate_trees(tree_density):
 	var x_start = -course_width / 2.0 + tree_space
 	var x_end = course_width / 2.0 - tree_space
 	for x in range(x_start, x_end, tree_space):
-		for y in range(0, course_length - house_space, tree_space * 2.0):
+		for y in range(house_space, course_length - house_space, tree_space * 2.0):
 			var noise_at_pos = noise.get_noise_2d(x, y)
 			var spawn_chance = noise_at_pos * tree_density
 			if randf() < spawn_chance:
@@ -78,6 +79,11 @@ func _generate_endzone():
 	new_endzone.set_corners(top_left, bottom_right)
 	add_child(new_endzone)
 	endzone = new_endzone
+	var flag_x = -course_width / 2.0
+	while flag_x < course_width / 2.0 - flag_space:
+		flag_x += flag_space
+		var flag_pos = Vector2(flag_x, top_left.y)
+		_add_flag_at(flag_pos)
 	pass
 
 
@@ -102,4 +108,11 @@ func _add_tree_at(pos):
 	var new_tree = tree_scn.instantiate()
 	new_tree.global_position = pos
 	add_child(new_tree)
+	pass
+
+
+func _add_flag_at(pos):
+	var new_flag = flag_scn.instantiate()
+	new_flag.global_position = pos
+	add_child(new_flag)
 	pass

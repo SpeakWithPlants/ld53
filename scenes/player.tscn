@@ -66,3 +66,6 @@ horizontal_alignment = 1
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tu6w7")
+
+[node name="recover_timer" type="Timer" parent="."]
+one_shot = true

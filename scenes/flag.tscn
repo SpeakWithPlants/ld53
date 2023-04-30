@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://v7kmg5u22awo"]
+
+[ext_resource type="Texture2D" uid="uid://cwjam6u1td5sa" path="res://assets/sprites/flag.png" id="1_evlgw"]
+
+[node name="flag" type="Node2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(10, -27)
+texture = ExtResource("1_evlgw")

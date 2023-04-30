@@ -1,7 +1,7 @@
 extends Node2D
 
-const max_point_value = 250.0
-const bonus_point_value = 50.0
+const max_point_value = 100.0
+const bonus_point_value = 10.0
 
 var point_value = max_point_value
 

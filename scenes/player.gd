@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal deliver(player)
+signal obstacle_collision(player, obstacle)
 
 const max_speed = 850.0
 const gravity = 800.0
@@ -11,15 +12,21 @@ const turn_speed = 4.5
 
 var use_mouse = false
 var direction = Vector2.RIGHT
+var halted = true
+var recovering = false
 
 @onready var sprite = $sprite
 @onready var trail = $sprite/trail
 @onready var shred = $sprite/shred
 @onready var speed_label = $speed_label
+@onready var collider = $collider
+@onready var recover_timer = $recover_timer
 
 func _ready():
 	trail.emitting = false
 	shred.emitting = false
+	var ui = get_tree().get_first_node_in_group("ui")
+	connect("obstacle_collision", ui._on_obstacle_collision)
 	pass
 
 
@@ -32,6 +39,7 @@ func _physics_process(delta):
 	_get_delivery_input()
 	_update_direction(delta)
 	_update_velocity(delta)
+	_handle_collisions()
 	move_and_slide()
 	pass
 
@@ -43,6 +51,12 @@ func _update_visual():
 
 
 func _update_direction(delta):
+	if halted:
+		if direction.dot(Vector2.RIGHT) > 0:
+			direction = Vector2.RIGHT
+		else:
+			direction = Vector2.LEFT
+		return
 	var target_direction = get_target_direction()
 	if target_direction == Vector2.ZERO:
 		target_direction = direction
@@ -60,6 +74,9 @@ func _update_direction(delta):
 
 
 func _update_velocity(delta):
+	if halted:
+		velocity = velocity.move_toward(Vector2.ZERO, friction * 10.0 * delta)
+		return
 	var downhill_dot = direction.dot(Vector2.DOWN)
 	var downhill_multiplier = sign(downhill_dot) * sqrt(abs(downhill_dot))
 	var friction_multiplier = 1.0 - max(0.0, downhill_dot)
@@ -70,6 +87,21 @@ func _update_velocity(delta):
 	speed = move_toward(speed, 0, friction_multiplier * friction * delta)
 	speed = clamp(speed, -current_max_speed, current_max_speed)
 	velocity = velocity.move_toward(direction * speed, control * delta)
+	pass
+
+
+func _handle_collisions():
+	if velocity.length() > max_speed * 0.2 and recover_timer.is_stopped():
+		recovering = false
+	if recovering:
+		return
+	var collisions = get_slide_collision_count()
+	if collisions > 0:
+		recovering = true
+		recover_timer.stop()
+		recover_timer.start()
+		var obstacle = get_slide_collision(0).get_collider()
+		emit_signal("obstacle_collision", self, obstacle)
 	pass
 
 

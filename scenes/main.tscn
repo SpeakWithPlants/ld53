@@ -1,27 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://citan4xh2bwjy"]
+[gd_scene load_steps=3 format=3 uid="uid://citan4xh2bwjy"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_8di1l"]
-[ext_resource type="PackedScene" uid="uid://bxddehpx6jw55" path="res://scenes/player.tscn" id="2_73g8t"]
-[ext_resource type="PackedScene" uid="uid://b4fva8lsbck8o" path="res://scenes/level.tscn" id="3_7pqg3"]
 [ext_resource type="PackedScene" uid="uid://ck2oah7a38n8g" path="res://scenes/ui.tscn" id="4_rj67c"]
 
 [node name="main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_8di1l")
 
-[node name="level" parent="." instance=ExtResource("3_7pqg3")]
+[node name="camera" type="Camera2D" parent="."]
 
-[node name="player" parent="." instance=ExtResource("2_73g8t")]
-
-[node name="camera" type="Camera2D" parent="player"]
-
-[node name="ui" parent="player/camera" groups=["ui"] instance=ExtResource("4_rj67c")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-offset_top = -251.0
-offset_bottom = -251.0
-grow_vertical = 1
-size_flags_horizontal = 4
-mouse_filter = 1
+[node name="ui" parent="camera" instance=ExtResource("4_rj67c")]
+z_index = 2
