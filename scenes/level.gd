@@ -29,7 +29,7 @@ func generate_level(houses, tree_density):
 	var view_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var view_scale = ProjectSettings.get_setting("display/window/stretch/scale")
 	var scaled_width = view_width / view_scale
-	course_width = scaled_width * 2.5
+	course_width = scaled_width * 1.5
 	_generate_houses(houses)
 	_generate_fences()
 	_generate_trees(tree_density)

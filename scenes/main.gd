@@ -34,6 +34,8 @@ func _physics_process(_delta):
 
 
 func start():
+	if player != null:
+		player.queue_free()
 	player = player_scn.instantiate()
 	add_child(player)
 	if level != null:

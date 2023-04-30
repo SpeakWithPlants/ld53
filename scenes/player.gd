@@ -22,6 +22,10 @@ var recovering = false
 @onready var speed_label = $speed_label
 @onready var collider = $collider
 @onready var recover_timer = $recover_timer
+@onready var trail_source_1 = $trail_point_1
+@onready var trail_source_2 = $trail_point_2
+@onready var trail_point_1 = $particles/trail_point_1
+@onready var trail_point_2 = $particles/trail_point_2
 
 func _ready():
 	trail.emitting = false
@@ -50,7 +54,7 @@ func _update_visual():
 	var desired_frame = max(0, direction.dot(Vector2.DOWN)) * 3
 	if direction.dot(Vector2.LEFT) > 0:
 		desired_frame += 3
-	sprite.frame = desired_frame % 6
+	sprite.frame = int(desired_frame) % 6
 	speed_label.text = "%0.1f" % velocity.length()
 	_update_trail()
 
@@ -117,6 +121,8 @@ func _update_trail():
 		ui.counting = true
 	trail.emitting = speed > 0
 	shred.emitting = abs(velocity.normalized().dot(direction)) < 0.8 and trail.emitting
+	trail_source_1.global_position = trail_point_1.global_position
+	trail_source_2.global_position = trail_point_2.global_position
 	pass
 
 

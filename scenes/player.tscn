@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxddehpx6jw55"]
+[gd_scene load_steps=8 format=3 uid="uid://bxddehpx6jw55"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_rblnb"]
 [ext_resource type="Texture2D" uid="uid://dc58j7gviomfx" path="res://assets/sprites/skiier.png" id="2_oti6l"]
+[ext_resource type="PackedScene" uid="uid://bufgboq4t4o6l" path="res://scenes/snow_trail.tscn" id="3_adrg4"]
 [ext_resource type="Texture2D" uid="uid://lve4ix3uska3" path="res://assets/sprites/snow_trail.png" id="3_xc43k"]
 
 [sub_resource type="Gradient" id="Gradient_5xqdi"]
@@ -15,8 +16,20 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_tu6w7"]
 radius = 5.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rblnb")
+
+[node name="trail_point_1" type="Node2D" parent="."]
+position = Vector2(-7, -2)
+
+[node name="snow_trail" parent="trail_point_1" instance=ExtResource("3_adrg4")]
+z_index = -1
+
+[node name="trail_point_2" type="Node2D" parent="."]
+position = Vector2(-7, 2)
+
+[node name="snow_trail" parent="trail_point_2" instance=ExtResource("3_adrg4")]
+z_index = -1
 
 [node name="particles" type="Node2D" parent="."]
 
@@ -47,6 +60,12 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 80.0
 initial_velocity_max = 150.0
 color_ramp = SubResource("Gradient_blx0c")
+
+[node name="trail_point_1" type="Node2D" parent="particles"]
+position = Vector2(-7, -2)
+
+[node name="trail_point_2" type="Node2D" parent="particles"]
+position = Vector2(-7, 2)
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
